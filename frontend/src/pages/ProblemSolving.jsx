@@ -32,7 +32,7 @@ const ProblemSolving = () => {
   useEffect(() => {
     const fetchProblem = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/problems/${problemId}`);
+        const { data } = await axios.get(`/api/problems/${problemId}`);
         setProblem(data);
         if (data.testCases && data.testCases.length > 0) {
           // Pre-fill custom input with the first public testcase
@@ -52,7 +52,7 @@ const ProblemSolving = () => {
     setSubmissionResult(null);
     setActiveTab('result');
     try {
-      const { data } = await axios.post('http://localhost:5000/api/submissions/run', {
+      const { data } = await axios.post('/api/submissions/run', {
         code,
         language,
         input: customInput
@@ -77,7 +77,7 @@ const ProblemSolving = () => {
     setRunResult(null);
     setActiveTab('result');
     try {
-      const { data } = await axios.post('http://localhost:5000/api/submissions', {
+      const { data } = await axios.post('/api/submissions', {
         problemId,
         contestId,
         code,

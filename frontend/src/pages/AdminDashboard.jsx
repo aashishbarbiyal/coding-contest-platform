@@ -15,16 +15,16 @@ const AdminDashboard = () => {
   const fetchData = async () => {
     try {
       if (activeTab === 'contests') {
-        const { data } = await axios.get('http://localhost:5000/api/contests');
+        const { data } = await axios.get('/api/contests');
         setContests(data);
       } else if (activeTab === 'problems') {
-        const { data } = await axios.get('http://localhost:5000/api/problems');
+        const { data } = await axios.get('/api/problems');
         setProblems(data);
       } else if (activeTab === 'users') {
-        const { data } = await axios.get('http://localhost:5000/api/users');
+        const { data } = await axios.get('/api/users');
         setUsers(data);
       } else if (activeTab === 'submissions') {
-        const { data } = await axios.get('http://localhost:5000/api/submissions/all');
+        const { data } = await axios.get('/api/submissions/all');
         setSubmissions(data);
       }
     } catch (error) {
@@ -44,7 +44,7 @@ const AdminDashboard = () => {
   const handleContestSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/contests', contestData);
+      await axios.post('/api/contests', contestData);
       toast.success('Contest created successfully');
       setContestData({ title: '', description: '', startTime: '', endTime: '' });
       fetchData();
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
     e.preventDefault();
     try {
       const payload = { ...problemData, testCases, tags: [] };
-      await axios.post('http://localhost:5000/api/problems', payload);
+      await axios.post('/api/problems', payload);
       toast.success('Problem created successfully');
       setProblemData({ title: '', description: '', difficulty: 'Easy', constraints: '', contestId: '', score: 100 });
       setTestCases([{ input: '', output: '', isHidden: false }]);
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
   const handleDeleteContest = async (id) => {
     if (!window.confirm('Are you sure?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/contests/${id}`);
+      await axios.delete(`/api/contests/${id}`);
       toast.success('Contest deleted');
       fetchData();
     } catch (error) {
@@ -81,7 +81,7 @@ const AdminDashboard = () => {
   const handleDeleteProblem = async (id) => {
     if (!window.confirm('Are you sure?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/problems/${id}`);
+      await axios.delete(`/api/problems/${id}`);
       toast.success('Problem deleted');
       fetchData();
     } catch (error) {
@@ -92,7 +92,7 @@ const AdminDashboard = () => {
   const handleMakeAdmin = async (id) => {
     if (!window.confirm('Make this user admin?')) return;
     try {
-      await axios.put(`http://localhost:5000/api/users/${id}/role`, { role: 'admin' });
+      await axios.put(`/api/users/${id}/role`, { role: 'admin' });
       toast.success('User updated to admin');
       fetchData();
     } catch (error) {
@@ -103,7 +103,7 @@ const AdminDashboard = () => {
   const handleDeleteUser = async (id) => {
     if (!window.confirm('Delete this user?')) return;
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`);
+      await axios.delete(`/api/users/${id}`);
       toast.success('User deleted');
       fetchData();
     } catch (error) {

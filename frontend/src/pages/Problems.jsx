@@ -14,7 +14,7 @@ const Problems = () => {
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/problems');
+        const { data } = await axios.get('/api/problems');
         setProblems(data);
       } catch (error) {
         console.error('Failed to fetch problems');

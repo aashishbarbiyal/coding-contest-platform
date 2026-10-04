@@ -11,7 +11,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchSubmissions = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/submissions');
+        const { data } = await axios.get('/api/submissions');
         setSubmissions(data);
       } catch (error) {
         console.error('Failed to fetch submissions');

@@ -14,7 +14,7 @@ const ContestDetails = () => {
   useEffect(() => {
     const fetchContest = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/contests/${id}`);
+        const { data } = await axios.get(`/api/contests/${id}`);
         setContest(data);
       } catch (error) {
         toast.error('Failed to load contest');
@@ -59,7 +59,7 @@ const ContestDetails = () => {
 
   const handleRegister = async () => {
     try {
-      await axios.post(`http://localhost:5000/api/contests/${id}/register`);
+      await axios.post(`/api/contests/${id}/register`);
       toast.success('Successfully registered for the contest');
       setContest({ ...contest, registeredUsers: [...contest.registeredUsers, user._id] });
     } catch (error) {

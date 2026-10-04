@@ -10,7 +10,7 @@ const Contests = () => {
   useEffect(() => {
     const fetchContests = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/contests');
+        const { data } = await axios.get('/api/contests');
         setContests(data);
       } catch (error) {
         console.error('Failed to fetch contests');

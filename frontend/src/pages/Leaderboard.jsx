@@ -13,7 +13,7 @@ const Leaderboard = () => {
     const fetchLeaderboard = async () => {
       try {
         if (contestId) {
-          const { data } = await axios.get(`http://localhost:5000/api/contests/${contestId}/leaderboard`);
+          const { data } = await axios.get(`/api/contests/${contestId}/leaderboard`);
           setLeaderboard(data);
         } else {
           // Mock global leaderboard or fetch from a global route if it existed

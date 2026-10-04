@@ -31,7 +31,7 @@ const Playground = () => {
     setStatus('');
     setExecutionTime(null);
     try {
-      const { data } = await axios.post('http://localhost:5000/api/submissions/run', {
+      const { data } = await axios.post('/api/submissions/run', {
         code,
         language,
         input
